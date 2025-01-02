@@ -177,3 +177,43 @@ button[type="submit"]:hover {
   margin-top: 20px;
   font-size: 20px;
 }
+
+.contact {
+  padding: 40px 20px;
+  background-color: #f4f4f4;
+  text-align: center;
+}
+
+.contact h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.contact-details {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+.contact-item {
+  width: 30%;
+}
+
+.contact-item h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.contact-item p {
+  font-size: 1rem;
+  color: #333;
+}
+
+.contact-item a {
+  text-decoration: none;
+  color: #db5aaa;
+}
+
+.contact-item a:hover {
+  text-decoration: underline;
+}
