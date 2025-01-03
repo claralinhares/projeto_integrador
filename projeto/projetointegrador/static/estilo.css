@@ -180,7 +180,7 @@ button[type="submit"]:hover {
 
 .contact {
   padding: 40px 20px;
-  background-color: #f4f4f4;
+  background-color:linear-gradient(135deg, #571634, #e0448d);
   text-align: center;
 }
 
