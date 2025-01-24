@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Evento</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 20px 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333333;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        input, textarea, button {
+            font-size: 16px;
+            padding: 10px;
+            border: 1px solid #cccccc;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        input:focus, textarea:focus {
+            border-color: #e0448d;
+            box-shadow: 0 0 5px rgba(233, 4, 92, 0.5);
+        }
+
+        textarea {
+            resize: none;
+        }
+
+        button {
+            background-color: #e0448d ;
+            color: #ffffff;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #aa0954;
+        }
+
+        .success-message {
+            background-color: #d4edda;
+            color: #d1648e;
+            padding: 10px;
+            border: 1px solid #c3e6cb;
+            border-radius: 5px;
+            margin-top: 15px;
+            text-align: center;
+        }
+
+        .error-message {
+            background-color: #f8d7da;
+            color: #d30a5e;
+            padding: 10px;
+            border: 1px solid #f5c6cb;
+            border-radius: 5px;
+            margin-top: 15px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Cadastrar Evento</h1>
+        {% if messages %}
+    {% for message in messages %}
+        <div class="{{ message.tags }}-message">{{ message }}</div>
+    {% endfor %}
+{% endif %}
+
+        <form method="POST" action="">
+            {% csrf_token %}
+            <input type="text" name="name" placeholder="Nome do Evento" required>
+            <textarea name="description" placeholder="Descrição do Evento (opcional)" rows="4"></textarea>
+            <input type="date" name="date" required>
+            <input type="text" name="location" placeholder="Local do Evento" required>
+            <button type="submit">Cadastrar</button>
+        </form>
+    </div>
+</body>
+</html>

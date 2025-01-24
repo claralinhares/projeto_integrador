@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
@@ -12,7 +13,7 @@
     <meta http-equiv="X-Frame-Options" content="DENY" />
     <meta http-equiv="Referrer-Policy" content="no-referrer" />
     <title>Bem-vindo a TechSecure</title>
-    <link rel="stylesheet" href="/static/estilo.css"/>
+    <link rel="stylesheet" href="{% static 'estilo.css' %}"/>
   </head>
 
   <body>
@@ -20,6 +21,7 @@
     <header>
       <nav class="navbar">
         <div class="logo">
+          <img src="{% static  'img/logo 2.png' %}" alt="Logo TechSecure" class="logo">
           <a href="#">TechSecure</a>
         </div>
         <div class="menu">
@@ -45,29 +47,29 @@
         <a href="/forms" class="cta-button" onclick="scrollToForm()">
           Cadastro em evento
         </a>
-        <a href="#" class="cta-button">Cadastrar novo evento</a>
+        <a href="create_event" class="cta-button">Cadastrar novo evento</a>
       </div>
     </section>
     <section class="products" id="nossos-servicos">
       <h2>Nossos serviços</h2>
       <div class="product-cards">
         <div class="product-card">
-          <img src="https://via.placeholder.com/300" alt="Produto 1" />
+          <img src="{% static  'img/card1.jpg' %}" alt="Produto 1" />
           <h3>Autenticação Segura para Acesso</h3>
           <p> Implementamos um sistema de autenticação segura que utiliza um leitor de QR Code para garantir um acesso rápido e protegido.</p>
-          <button>Ver Detalhes</button>
+          <button onclick="scrollToPlans()">Ver Detalhes</button>
         </div>
         <div class="product-card">
-          <img src="https://via.placeholder.com/300" alt="Produto 2" />
+          <img src="{% static  'img/card2.jpg' %}" alt="Produto 2" />
           <h3>Treinamento da Equipe de Segurança</h3>
           <p>Oferecemos treinamentos especializados para sua equipe de segurança, garantindo o uso eficiente do nosso sistema e a manutenção das melhores práticas de segurança.</p>
-          <button>Ver Detalhes</button>
+          <button onclick="scrollToPlans()">Ver Detalhes</button>
         </div>
         <div class="product-card">
-          <img src="https://via.placeholder.com/300" alt="Produto 3" />
+          <img src="{% static  'img/card3.jpg' %}" alt="Produto 3" />
           <h3> Geração de relatórios de Entradas e Saídas</h3>
           <p> Acompanhamento em tempo real das entradas e saídas, com relatórios detalhados para garantir total controle e segurança sobre o fluxo de acessos.</p>
-          <button>Ver Detalhes</button>
+          <button >Ver Detalhes</button>
         </div>
       </div>
     </section>
@@ -102,8 +104,32 @@
           </p>
         </div>
       </div>
+      <section class="pricing" id="planos">
+        <h2>Planos Disponíveis</h2>
+        <div class="pricing-cards">
+          <div class="pricing-card">
+            <h3>Básico</h3>
+            <p>Ideal para pequenas empresas.</p>
+            <p class="price">R$99/mês</p>
+            <button>Assinar</button>
+          </div>
+          <div class="pricing-card">
+            <h3>Intermediário</h3>
+            <p>Para empresas em crescimento.</p>
+            <p class="price">R$199/mês</p>
+            <button>Assinar</button>
+          </div>
+          <div class="pricing-card">
+            <h3>Premium</h3>
+            <p>O melhor para grandes corporações.</p>
+            <p class="price">R$299/mês</p>
+            <button>Assinar</button>
+          </div>
+        </div>
+      </section>
+      <a href="list_events.html">Ver Eventos</a>
 
-    <!-- Rodapé -->
+      <!-- Rodapé -->
     <footer>
       <p>&copy; 2024 TechSecure. Todos os direitos reservados.</p>
       <div>

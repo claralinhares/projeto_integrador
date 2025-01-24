@@ -21,7 +21,16 @@ header {
   align-items: center;
   padding: 0 50px;
 }
+.logo-container {
+  display: flex; 
+  align-items: center; 
+}
 
+.logo {
+  width: 25px; 
+  height: auto; 
+  margin-right: 10px; 
+}
 .navbar .logo a {
   font-size: 28px;
   font-weight: bold;
@@ -177,7 +186,6 @@ button[type="submit"]:hover {
   margin-top: 20px;
   font-size: 20px;
 }
-
 .contact {
   padding: 40px 20px;
   background-color:linear-gradient(135deg, #571634, #e0448d);
@@ -216,4 +224,49 @@ button[type="submit"]:hover {
 
 .contact-item a:hover {
   text-decoration: underline;
+}
+.pricing {
+  padding: 2rem;
+  background-color: #f4f4f4;
+  text-align: center;
+}
+
+.pricing-cards {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 1rem;
+}
+
+.pricing-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 300px;
+}
+
+.pricing-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.pricing-card .price {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 1rem 0;
+}
+
+.pricing-card button {
+  background-color:#e0448d ;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.pricing-card button:hover {
+  background-color: #e0448d;
 }

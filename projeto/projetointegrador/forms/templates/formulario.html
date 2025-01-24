@@ -63,6 +63,13 @@
 
           <div>
             <img src="data:image/png;base64,{{ qrcode }}" alt="QR Code" />
+          <div id="feedback" class="feedback">
+              {% if messages %}
+                {% for message in messages %}
+                  <p class="message {{ message.tags }}">{{ message }}</p>
+                {% endfor %}
+              {% endif %}
+          </div>
           </div>
           <footer>
             <p>&copy; 2024 TechSecure. Todos os direitos reservados.</p>
