@@ -52,28 +52,11 @@ def list_events(request):
     eventos = Event.objects.all()  # Ou outra lógica para filtrar eventos
     return render(request, 'list_events.html', {'eventos': eventos})
 
-def scanner_for_event(request, event_id):
-    event = get_object_or_404(Event, id=event_id)
-
-    if request.method == "POST":
-        try:
-            body = json.loads(request.body)
-            qr_data = body.get("qr_data")
-
-            # Verifica se o participante existe
-            participant = Participant.objects.get(qr_code_data=qr_data, event=event)
-            if participant.is_present:
-                return JsonResponse({"status": "error", "message": "Presença já registrada!"})
-
-            # Marca o participante como presente
-            participant.is_present = True
-            participant.save()
-            return JsonResponse({"status": "success", "message": "Presença registrada com sucesso!"})
-
-        except Participant.DoesNotExist:
-            return JsonResponse({"status": "error", "message": "QR Code inválido ou participante não encontrado!"})
-
-        except json.JSONDecodeError:
-            return JsonResponse({"status": "error", "message": "Dados inválidos enviados no corpo da solicitação!"})
-
-    return render(request, "scanner.html", {"event": event})
+def scanner(request, qr_code_data):
+    try:
+        # Caso o QR Code esteja vinculado a um modelo
+        event = get_object_or_404(Event, qr_code_field=qr_code_data)  # Altere "qr_code_field" para o campo correto
+        return render(request, 'scanner_result.html', {'event': event})
+    except Exception as e:
+        # Caso algo dê errado
+        return render(request, 'scanner_error.html', {'error': str(e)})
