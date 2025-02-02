@@ -14,8 +14,10 @@ class Event(models.Model):
 
     def __str__(self):
         return self.name
+
 class Participant(models.Model):
-    nome = models.CharField(max_length=255)
+    nome = models.CharField(max_length=255, null=True)
     email = models.EmailField()
-    cpf = models.CharField(max_length=11)
-    qr_code_data = models.TextField() 
+    cpf = models.CharField(max_length=11, null=True)
+    qr_code_data = models.TextField(null=True)
+    event =  models.ForeignKey(Event, on_delete=models.CASCADE, null=True)

@@ -16,10 +16,10 @@ def index(request):
 
 def forms(request):
     template = loader.get_template("formulario.html")
-    return HttpResponse(template.render({}, request))
+    eventos = Event.objects.all()
+    return HttpResponse(template.render({'eventos': eventos}, request))
 
 def cadastro(request):
-    print(request.POST)
     texto_qrcode = request.POST.get("cpf") + 'id'
     img = qrcode.make(texto_qrcode)
     buffered = BytesIO()
@@ -27,6 +27,18 @@ def cadastro(request):
     qr_img_bytes = base64.b64encode(buffered.getvalue()).decode("ascii")
     template = loader.get_template("formulario.html")
    
+    if request.method == "POST":
+        nome = request.POST.get("nome")
+        email = request.POST.get("email")
+        cpf = request.POST.get("cpf")
+        event = request.POST.get("event")
+
+        try:
+            Participant.objects.create(nome=nome, email=email, cpf=cpf, qr_code_data=qr_img_bytes, event=Event.objects.get(id=event))
+            messages.success(request, "Participante cadastrado com sucesso!")
+        except Exception as e:
+            messages.error(request, f"Erro ao cadastrar participante: {e}")
+
     return HttpResponse(template.render({"qrcode": qr_img_bytes}, request))
 
 
@@ -52,7 +64,7 @@ def list_events(request):
     eventos = Event.objects.all()  # Ou outra lógica para filtrar eventos
     return render(request, 'list_events.html', {'eventos': eventos})
 
-def scanner(request, qr_code_data):
+def scanner_for_event(request, qr_code_data):
     try:
         # Caso o QR Code esteja vinculado a um modelo
         event = get_object_or_404(Event, qr_code_field=qr_code_data)  # Altere "qr_code_field" para o campo correto

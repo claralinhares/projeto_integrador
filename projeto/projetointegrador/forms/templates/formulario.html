@@ -1,83 +1,98 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bem-vindo a TechSecure</title>
-    <link rel="stylesheet" href="/static/estilo.css" />
-  </head>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Bem-vindo a TechSecure</title>
+        <link rel="stylesheet" href="/static/estilo.css" />
+    </head>
 
-  <body>
-    <!-- Formulário de Inscrição -->
-    <section class="subscription-section" id="subscription-form">
-      <div class="container">
-        <h2>Inscreva-se Agora!</h2>
-        <p>
-          Preencha seus dados abaixo:
-        </p>
+    <body>
+        <!-- Formulário de Inscrição -->
+        <section class="subscription-section" id="subscription-form">
+            <div class="container">
+                <h2>Inscreva-se Agora!</h2>
+                <p>Preencha seus dados abaixo:</p>
 
-        <form
-          id="form-inscricao"
-          action="{% url 'forms:cadastro' %}"
-          method="POST"
-        >
-          {% csrf_token %}
-          <input
-            type="hidden"
-            name="csrf_token"
-            value="exemplo_token_gerado_backend"
-          />
+                <form
+                    id="form-inscricao"
+                    action="{% url 'forms:cadastro' %}"
+                    method="POST"
+                >
+                    {% csrf_token %}
+                    <input
+                        type="hidden"
+                        name="csrf_token"
+                        value="exemplo_token_gerado_backend"
+                    />
 
-          <label for="nome">Nome Completo:</label>
-          <input
-            type="text"
-            id="nome"
-            name="nome"
-            required
-            placeholder="Seu nome completo"
-            oninput="validateField(this)"
-          />
+                    <label for="nome">Nome Completo:</label>
+                    <input
+                        type="text"
+                        id="nome"
+                        name="nome"
+                        required
+                        placeholder="Seu nome completo"
+                        oninput="validateField(this)"
+                    />
 
-          <label for="email">Email Principal:</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            required
-            placeholder="Seu melhor e-mail"
-            oninput="validateField(this)"
-          />
+                    <label for="email">Email Principal:</label>
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        required
+                        placeholder="Seu melhor e-mail"
+                        oninput="validateField(this)"
+                    />
 
-          <label for="cpf">CPF:</label>
-          <input
-            type="text"
-            id="cpf"
-            name="cpf"
-            placeholder="Digite seu CPF"
-            oninput="validateField(this)"
-          />
+                    <label for="cpf">CPF:</label>
+                    <input
+                        type="text"
+                        id="cpf"
+                        name="cpf"
+                        placeholder="Digite seu CPF"
+                        oninput="validateField(this)"
+                    />
 
-          <button type="submit" class="cta-button" id="submit-button">
-            Inscrever Agora
-          </button>
+                    <label for="event">Evento</label>
+                    <select name="event" id="event">
+                        {% for event in eventos %}
+                        <option value="{{ event.id }}">{{ event.name }}</option>
+                        {% endfor %}
+                    </select>
 
-          <div>
-            <img src="data:image/png;base64,{{ qrcode }}" alt="QR Code" />
-          <div id="feedback" class="feedback">
-              {% if messages %}
-                {% for message in messages %}
-                  <p class="message {{ message.tags }}">{{ message }}</p>
-                {% endfor %}
-              {% endif %}
-          </div>
-          </div>
-          <footer>
-            <p>&copy; 2024 TechSecure. Todos os direitos reservados.</p>
-          </footer>
-          <!-- Área de Feedback de Inscrição -->
-          <div id="feedback" class="feedback" style="display: none"></div>
-        </form>
-      </div>
-    </section>
-  </body>
+                    <button type="submit" class="cta-button" id="submit-button">
+                        Inscrever Agora
+                    </button>
+
+                    <div>
+                        <img
+                            src="data:image/png;base64,{{ qrcode }}"
+                            alt="QR Code"
+                        />
+                        <div id="feedback" class="feedback">
+                            {% if messages %} {% for message in messages %}
+                            <p class="message {{ message.tags }}">
+                                {{ message }}
+                            </p>
+                            {% endfor %} {% endif %}
+                        </div>
+                    </div>
+                    <footer>
+                        <p>
+                            &copy; 2024 TechSecure. Todos os direitos
+                            reservados.
+                        </p>
+                    </footer>
+                    <!-- Área de Feedback de Inscrição -->
+                    <div
+                        id="feedback"
+                        class="feedback"
+                        style="display: none"
+                    ></div>
+                </form>
+            </div>
+        </section>
+    </body>
 </html>
