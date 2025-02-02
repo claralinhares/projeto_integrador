@@ -24,7 +24,7 @@ urlpatterns = [
     path("", views.index, name="index"),
     path('forms/', include('forms.urls')),
     path("create_event/", views.create_event, name="create_event"),
-    path("scanner/<int:event_id>/", views.scanner_for_event, name="scanner_for_event"),
     path('list_events/', views.list_events, name='list_events'),
+    path('api/inscricao/validar/', views.validar_inscricao, name='validar_inscricao'),
     ]
 

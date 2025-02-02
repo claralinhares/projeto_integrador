@@ -4,14 +4,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      http-equiv="Content-Security-Policy"
-      content="default-src 'self'; script-src 'self'; style-src 'self';"
-    />
-    <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
-    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
-    <meta http-equiv="X-Frame-Options" content="DENY" />
-    <meta http-equiv="Referrer-Policy" content="no-referrer" />
+    <meta https-equiv="Content-Security-Policy" content="default-src *;" />
     <title>Bem-vindo a TechSecure</title>
     <link rel="stylesheet" href="{% static 'estilo.css' %}"/>
   </head>
@@ -48,8 +41,13 @@
           Cadastro em evento
         </a>
         <a href="create_event" class="cta-button">Cadastrar novo evento</a>
+
+        <button type="button" onclick="abrirCamera()" class="cta-button">Escanear QRCode</button>
       </div>
     </section>
+
+    <div id="reader" width="600px"></div>
+
     <section class="products" id="nossos-servicos">
       <h2>Nossos serviços</h2>
       <div class="product-cards">
@@ -138,62 +136,8 @@
         <a href="#">Ajuda</a>
       </div>
     </footer>
-
-    <script src="script.js"></script>
-
-    <script>
-      // Função para rolar até o formulário
-      function scrollToForm() {
-        document
-          .getElementById("subscription-form")
-          .scrollIntoView({ behavior: "smooth" });
-      }
-
-      // Validação em tempo real dos campos
-      function validateField(input) {
-        const feedback = document.getElementById("feedback");
-        const emailRegex = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
-
-        if (input.type === "email") {
-          if (!emailRegex.test(input.value)) {
-            feedback.style.display = "block";
-            feedback.className = "feedback error";
-            feedback.innerText = "Email inválido. Verifique o formato.";
-          } else {
-            feedback.style.display = "none";
-          }
-        }
-      }
-
-      // Função para lidar com o envio do formulário
-      function handleSubmit(event) {
-        event.preventDefault(); // Evita o envio padrão do formulário
-
-        // Desabilitar o botão de envio enquanto processa
-        const button = document.getElementById("submit-button");
-        button.disabled = true;
-        button.innerHTML = "Enviando...";
-
-        // Simula o envio do formulário com um tempo de espera (ex: AJAX)
-        setTimeout(function () {
-          const feedback = document.getElementById("feedback");
-          const success = true; // Aqui você pode colocar sua lógica real de backend
-
-          if (success) {
-            feedback.className = "feedback success";
-            feedback.innerHTML = "Você foi inscrito com sucesso!";
-            feedback.style.display = "block";
-          } else {
-            feedback.className = "feedback error";
-            feedback.innerHTML = "Ocorreu um erro. Tente novamente.";
-            feedback.style.display = "block";
-          }
-
-          // Reabilitar o botão e resetar o texto
-          button.innerHTML = "Inscrever Agora";
-          button.disabled = false;
-        }, 2000); // Simula um tempo de processamento
-      }
-    </script>
   </body>
+
+  <script type="text/javascript" src="{% static 'scripts.js' %}"></script>
+  <script type="text/javascript" src="{% static 'html5-qrcode.min.js' %}"></script>
 </html>
