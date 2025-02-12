@@ -20,7 +20,7 @@ def forms(request):
     return HttpResponse(template.render({'eventos': eventos}, request))
 
 def cadastro(request):
-    texto_qrcode = request.POST.get("cpf") + 'id'
+    texto_qrcode = request.POST.get("cpf")
     img = qrcode.make(texto_qrcode)
     buffered = BytesIO()
     img.save(buffered, format="PNG")
@@ -64,11 +64,27 @@ def list_events(request):
     eventos = Event.objects.all()  # Ou outra lógica para filtrar eventos
     return render(request, 'list_events.html', {'eventos': eventos})
 
-def scanner_for_event(request, qr_code_data):
-    try:
-        # Caso o QR Code esteja vinculado a um modelo
-        event = get_object_or_404(Event, qr_code_field=qr_code_data)  # Altere "qr_code_field" para o campo correto
-        return render(request, 'scanner_result.html', {'event': event})
-    except Exception as e:
-        # Caso algo dê errado
-        return render(request, 'scanner_error.html', {'error': str(e)})
+def validar_inscricao(request):
+    print(request)
+    cpf = request.GET.get('qrcode')
+
+    if cpf:
+        try:
+            participante = Participant.objects.get(cpf=cpf)
+            return JsonResponse({
+                'status': 'success',
+                    'message': 'Participante encontrado!',
+                    'nome': participante.nome,
+                    'email': participante.email,
+            })
+        except Participant.DoesNotExist:
+            return JsonResponse({
+                'status': 'error',
+                'message': 'Participante não encontrado',
+            })
+    return JsonResponse({
+        'status': 'error',
+        'message': ' Metodo inválido',
+    })
+
+        
