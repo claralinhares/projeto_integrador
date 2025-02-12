@@ -1,16 +1,12 @@
-<h1>Eventos Disponíveis</h1>
-<ul>
+<link rel="stylesheet" href="/static/estilo.css" />
+
+<h1 class="eventos-titulo">Eventos Disponíveis</h1>
+<ul class="eventos-lista">
     {% for event in eventos %}
     <li>
         <strong>{{ event.name }}</strong><br />
         <p>Data: {{ event.date }}</p>
         <p>Local: {{ event.location }}</p>
-        <a
-            href="{% url 'scanner_for_event' event.id %}"
-            style="color: blue; text-decoration: underline"
-        >
-            Abrir Scanner
-        </a>
     </li>
     <hr />
     {% endfor %}

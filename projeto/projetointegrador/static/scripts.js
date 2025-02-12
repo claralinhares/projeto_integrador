@@ -81,3 +81,12 @@ function handleSubmit(event) {
         button.disabled = false;
     }, 2000); // Simula um tempo de processamento
 }
+
+function scrollToPlans() {
+    const target = document.getElementById("planos");
+    if (target) {
+      target.scrollIntoView({ behavior: "smooth" });
+    } else {
+      console.error("A seção com o ID 'planos' não foi encontrada.");
+    }
+  }

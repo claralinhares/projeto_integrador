@@ -54,14 +54,14 @@
                         placeholder="Digite seu CPF"
                         oninput="validateField(this)"
                     />
-
+                    <div class="evento-container"></div>
                     <label for="event">Evento</label>
-                    <select name="event" id="event">
+                    <select name="event" id="event" class="custom-select">
                         {% for event in eventos %}
                         <option value="{{ event.id }}">{{ event.name }}</option>
                         {% endfor %}
                     </select>
-
+                    </div>
                     <button type="submit" class="cta-button" id="submit-button">
                         Inscrever Agora
                     </button>

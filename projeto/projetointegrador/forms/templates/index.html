@@ -20,8 +20,8 @@
         <div class="menu">
           <a href="#nossos-servicos">Serviços</a>
           <a href="#">Suporte</a>
-          <a href="#">Ofertas</a>
-          <a href="#">Contato</a>
+          <a href="#planos">Ofertas</a>
+          <a href="#contato">Contato</a>
         </div>
       </nav>
     </header>
@@ -36,14 +36,12 @@
           acesso, para proteger sua conta, realizamos a autenticação através de
           QR Code.
         </p>
-
-        <a href="/forms" class="cta-button" onclick="scrollToForm()">
-          Cadastro em evento
-        </a>
-        <a href="create_event" class="cta-button">Cadastrar novo evento</a>
-
-        <button type="button" onclick="abrirCamera()" class="cta-button">Escanear QRCode</button>
-      </div>
+        <div class="botao-container">
+          <a href="/forms" class="cta-button" onclick="scrollToForm()">Inscreva-se em evento</a>
+          <a href="create_event" class="cta-button">Cadastrar evento</a>
+          <button type="button" onclick="abrirCamera()" class="cta-button">Escanear QRCode</button>
+          <a href="list_events" class="cta-button">Eventos Disponíveis</a>
+        </div>
     </section>
 
     <div id="reader" width="600px"></div>
@@ -67,41 +65,10 @@
           <img src="{% static  'img/card3.jpg' %}" alt="Produto 3" />
           <h3> Geração de relatórios de Entradas e Saídas</h3>
           <p> Acompanhamento em tempo real das entradas e saídas, com relatórios detalhados para garantir total controle e segurança sobre o fluxo de acessos.</p>
-          <button >Ver Detalhes</button>
+          <button  onclick="scrollToPlans()">Ver Detalhes</button>
         </div>
       </div>
     </section>
-
-  <section class="contact" id="contato">
-    <h2>Entre em Contato</h2>
-      <p>
-        Se você tiver dúvidas ou precisar de mais informações, entre em contato conosco através de qualquer um dos canais abaixo. Estamos aqui para ajudar!
-      </p>
-      <div class="contact-details">
-        <div class="contact-item">
-          <h3>Email</h3>
-          <p><a href="#">contato@techsecureeventos.com.br</a></p>
-        </div>
-        
-        <div class="contact-item">
-          <h3>Telefone</h3>
-          <p>(84) 3301-1401</p>
-        </div>
-    
-        <div class="contact-item">
-          <h3>Endereço Matriz</h3>
-          <p> Avenida Rui Barbosa, n° 1270, Lagoa Nova, Natal-RN</p>
-        </div>
-    
-        <div class="contact-item">
-          <h3>Redes Sociais</h3>
-          <p>
-            <a href="https://www.facebook.com/TechSecure" target="_blank">Facebook</a> | 
-            <a href="https://www.instagram.com/TechSecure" target="_blank">Instagram</a> |
-            <a href="https://www.linkedin.com/company/TechSecure" target="_blank">LinkedIn</a>
-          </p>
-        </div>
-      </div>
       <section class="pricing" id="planos">
         <h2>Planos Disponíveis</h2>
         <div class="pricing-cards">
@@ -125,7 +92,60 @@
           </div>
         </div>
       </section>
-      <a href="list_events.html">Ver Eventos</a>
+      <section class="qrcode-events">
+        <h2>Por que usar QR Codes para Controle de Acesso em Eventos?</h2>
+      
+        <h3>1. Entrada Rápida e Sem Filas</h3>
+        <p>
+          O QR Code permite que os participantes acessem o evento rapidamente, sem a necessidade de bilhetes físicos. Com um simples escaneamento, a entrada é liberada de forma instantânea.
+        </p>
+      
+        <h3>2. Aumenta a Segurança</h3>
+        <p>
+          Utilizar QR Codes garante que apenas pessoas autorizadas tenham acesso, já que o código é único e gerado dinamicamente, dificultando fraudes e falsificações.
+        </p>
+      
+        <h3>3. Redução de Custos</h3>
+        <p>
+          Com o QR Code, não há necessidade de imprimir ingressos físicos ou utilizar sistemas caros, o que reduz significativamente os custos operacionais.
+        </p>
+      
+        <h3>4. Melhora a Experiência do Participante</h3>
+        <p>
+          O processo de entrada é ágil e digital, proporcionando uma experiência mais moderna e conveniente para os participantes.
+        </p>
+      </section>
+      
+      <section class="contact" id="contato">
+        <h2>Entre em Contato</h2>
+          <p>
+            Se você tiver dúvidas ou precisar de mais informações, entre em contato conosco através de qualquer um dos canais abaixo. Estamos aqui para ajudar!
+          </p>
+          <div class="contact-details">
+            <div class="contact-item">
+              <h3>Email</h3>
+              <p><a href="#">contato@techsecureeventos.com.br</a></p>
+            </div>
+            
+            <div class="contact-item">
+              <h3>Telefone</h3>
+              <p>(84) 3301-1401</p>
+            </div>
+        
+            <div class="contact-item">
+              <h3>Endereço Matriz</h3>
+              <p> Avenida Rui Barbosa, n° 1270, Lagoa Nova, Natal-RN</p>
+            </div>
+        
+            <div class="contact-item">
+              <h3>Redes Sociais</h3>
+              <p>
+                <a href="https://www.facebook.com/TechSecure" target="_blank">Facebook</a> | 
+                <a href="https://www.instagram.com/TechSecure" target="_blank">Instagram</a> |
+                <a href="https://www.linkedin.com/company/TechSecure" target="_blank">LinkedIn</a>
+              </p>
+            </div>
+          </div>
 
       <!-- Rodapé -->
     <footer>
