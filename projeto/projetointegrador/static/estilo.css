@@ -130,66 +130,45 @@ header {
   margin-bottom: 30px;
 }
 
-label {
-  display: block;
-  margin-bottom: 8px;
-  font-weight: bold;
+.evento-container {
+  margin-bottom: 15px; /* Espaço entre os elementos */
 }
 
-input {
-  width: 90%;
-  padding: 15px;
-  margin-bottom: 30px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 16px;
-}
-input:focus {
-  border-color: #ee5ca0;
-  outline: none;
-}
-.evento-container {
-  margin-bottom: 5px; /* Espaçamento entre os elementos */
-  padding: 10px;
-  background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-/* Estilo para o label */
 label {
   display: block;
   margin-bottom: 8px;
   font-weight: bold;
   font-size: 16px;
 }
-/* Estilo para o select */
-.custom-select {
-  width: 100%;
+
+input, select {
+  width: 100%; /* Ajusta os inputs e selects para o tamanho total */
   padding: 15px;
   margin-bottom: 20px;
   border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 16px;
+  box-sizing: border-box; /* Evita que padding altere o tamanho */
 }
-.custom-select:focus {
-  border-color: #ee5ca0;
-  outline: none;
-}
+
 button[type="submit"] {
   background-color: #ee5ca0;
   color: white;
   border: none;
-  padding: 15px 30px;
+  padding: 15px;
   font-size: 18px;
   cursor: pointer;
-  border-radius: 15px;
+  border-radius: 8px;
   width: 100%;
   transition: background-color 0.3s ease;
+  display: block; /* Garante que fique na linha certa */
+  margin-top: 10px; /* Adiciona espaço entre os inputs e o botão */
 }
 
 button[type="submit"]:hover {
   background-color: #db5aaa;
 }
+
 /* Produtos em Destaque */
 .products {
   background-color: #f9f9f9;

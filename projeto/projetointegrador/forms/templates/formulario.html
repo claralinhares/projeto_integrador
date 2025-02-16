@@ -13,7 +13,6 @@
             <div class="container">
                 <h2>Inscreva-se Agora!</h2>
                 <p>Preencha seus dados abaixo:</p>
-
                 <form
                     id="form-inscricao"
                     action="{% url 'forms:cadastro' %}"
@@ -25,7 +24,6 @@
                         name="csrf_token"
                         value="exemplo_token_gerado_backend"
                     />
-
                     <label for="nome">Nome Completo:</label>
                     <input
                         type="text"
@@ -35,7 +33,6 @@
                         placeholder="Seu nome completo"
                         oninput="validateField(this)"
                     />
-
                     <label for="email">Email Principal:</label>
                     <input
                         type="email"
@@ -45,7 +42,6 @@
                         placeholder="Seu melhor e-mail"
                         oninput="validateField(this)"
                     />
-
                     <label for="cpf">CPF:</label>
                     <input
                         type="text"
@@ -54,7 +50,7 @@
                         placeholder="Digite seu CPF"
                         oninput="validateField(this)"
                     />
-                    <div class="evento-container"></div>
+                    <div class="evento-container">
                     <label for="event">Evento</label>
                     <select name="event" id="event" class="custom-select">
                         {% for event in eventos %}
@@ -65,7 +61,6 @@
                     <button type="submit" class="cta-button" id="submit-button">
                         Inscrever Agora
                     </button>
-
                     <div>
                         <img
                             src="data:image/png;base64,{{ qrcode }}"
@@ -79,19 +74,19 @@
                             {% endfor %} {% endif %}
                         </div>
                     </div>
-                    <footer>
-                        <p>
-                            &copy; 2024 TechSecure. Todos os direitos
-                            reservados.
-                        </p>
-                    </footer>
-                    <!-- Área de Feedback de Inscrição -->
-                    <div
-                        id="feedback"
-                        class="feedback"
-                        style="display: none"
-                    ></div>
                 </form>
+                <footer>
+                    <p>
+                        &copy; 2024 TechSecure. Todos os direitos
+                        reservados.
+                    </p>
+                </footer>
+                <!-- Área de Feedback de Inscrição -->
+                <div
+                    id="feedback"
+                    class="feedback"
+                    style="display: none"
+                ></div>
             </div>
         </section>
     </body>
